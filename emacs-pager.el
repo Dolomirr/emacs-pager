@@ -46,10 +46,15 @@
 (define-derived-mode emacs-pager-mode fundamental-mode "Pager"
   "Mode for viewing data paged by emacs-pager"
   (setq-local make-backup-files nil)
-  (ansi-color-apply-on-region (goto-char (point-min))
+  (save-excursion
+    (goto-char (point-min))
+    (while (re-search-forward "\033]8;[^;]*;[^\a\033]*\a\\|\033]8;[^;]*;[^\a\033]*\033\\\\" nil t)
+      (replace-match "")))
+  (ansi-color-apply-on-region (point-min)
                               (save-excursion
+                                (goto-char (point-min))
                                 (forward-line emacs-pager-max-line-coloring)
-                                (point)))
+                                (point))))
 
   (setq buffer-name "*pager*")
   ;; maybe enable this back
