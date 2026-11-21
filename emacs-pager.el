@@ -28,10 +28,7 @@
 ;;; Code:
 
 (defvar emacs-pager-mode-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "q") 'emacs-pager-kill-pager)
-
-    map)
+  (make-sparse-keymap)
   "Keymap for emacs pager mode.")
 
 (defcustom emacs-pager-max-line-coloring 500
