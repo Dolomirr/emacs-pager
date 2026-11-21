@@ -52,7 +52,9 @@
                                 (point)))
 
   (setq buffer-name "*pager*")
-  (read-only-mode))
+  ;; maybe enable this back
+  ;; (read-only-mode)
+  )
 
 (provide 'emacs-pager)
 
